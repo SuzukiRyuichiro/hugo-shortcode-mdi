@@ -1,4 +1,4 @@
-<span style="display: flex; align-items: center; {{ with .Get "style" }}{{ . }}{{ end }}" class="inline-svg mdi {{ with .Get "class" }}{{ . }}{{ end }}">
+<span style="{{ .Get "style" | safeCSS }}" class="inline-svg mdi {{ with .Get "class" }}{{ . }}{{ end }}">
     {{- $fname:=print "/themes/mdi/icons/" ( .Get "alias" ) ".svg" -}}
     {{- $path:="<path" -}}
     {{- $fill:="<path fill=\"currentColor\"" -}}
