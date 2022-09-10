@@ -2,5 +2,5 @@
     {{- $fname:=print "/themes/mdi/icons/" ( .Get "alias" ) ".svg" -}}
     {{- $path:="<path" -}}
     {{- $fill:="<path fill=\"currentColor\"" -}}
-    {{ replace (slicestr (readFile $fname) 136) $path $fill | safeHTML }}
+    {{ replace (slicestr (os.ReadFile $fname) 136) $path $fill | safeHTML }}
 </span>
