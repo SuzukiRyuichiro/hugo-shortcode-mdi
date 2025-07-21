@@ -1,6 +1,7 @@
 <span {{ with .Get "style" }}style="{{ . | safeCSS }}"{{ end }} class="inline-svg mdi {{ with .Get "class" }}{{ . }}{{ end }}">
     {{- $fname:=print "/themes/mdi/icons/" ( .Get "alias" ) ".svg" -}}
-    {{- $path:="<path" -}}
-    {{- $fill:="<path fill=\"currentColor\"" -}}
-    {{ replace (slicestr (os.ReadFile $fname) 136) $path $fill | safeHTML }}
+    {{- $svgContent := os.ReadFile $fname -}}
+    {{- $svgContent = replace $svgContent "<svg" "<svg" -}}
+    {{- $svgContent = replace $svgContent "<path" "<path fill=\"currentColor\"" -}}
+    {{ $svgContent | safeHTML }}
 </span>
